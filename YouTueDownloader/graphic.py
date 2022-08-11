@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import filedialog
+from downloadVideo import f_chooseSavePath
 
 # Window specification
 root= Tk()
@@ -9,10 +10,10 @@ select_dir=Label(root,text='select dir',font=('italic 14'))
 select_dir.pack(pady=50)
 
 def get_directoryData():
-    
     filepath=filedialog.askdirectory(initialdir='C:\Downloads',title='DirectoryPath')
     label_path=Label(root,text=filepath,font=("italic 13"))
     label_path.pack(pady=50)
+    f_chooseSavePath(filepath)
 
 button=Button(root,text='getDir white',command=get_directoryData,width=10,height=4,bg='red',fg='white')
 button.pack()

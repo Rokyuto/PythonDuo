@@ -8,6 +8,7 @@ video = ""
 def f_chooseSavePath(path_to_save):
     global save_path
     save_path = path_to_save
+    print(save_path)
     return save_path
 
 # Function to Download the YouTue Content
