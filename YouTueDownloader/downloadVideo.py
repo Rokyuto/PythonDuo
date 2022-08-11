@@ -14,7 +14,6 @@ def f_chooseSavePath(path_to_save):
 # Function to Download the YouTue Content
 def f_DownloadContent(link,content_type):
     global video # Initialize YouTube Video Variable
-    print("Calling")
     try:
         video = pytube.YouTube(link) # Get the YouTube video from the YouTube URL
         # Check the Chosen video type - mp3 or mp4
@@ -29,7 +28,7 @@ def f_DownloadContent(link,content_type):
             new_file_name = base+'.mp3' # Change the audio file format to .mp3
             os.rename(audio_file,new_file_name) # Rename the audio file with the new name (new_file_name)
     except:
-        print("Error with Connection to YouTube")
+        pass
       
 # Test Functions  
 # f_chooseSavePath(temp)
