@@ -6,7 +6,7 @@ from tkinter import messagebox
 
 # Window specification
 root= Tk()
-root.title("YouTue Video Downloader")
+root.title("YouTube Video Downloader")
 label_path=""
 root.geometry('500x500')
 select_dir=Label(root,text='Select Directory',font=('italic 15'))
