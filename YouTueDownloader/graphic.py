@@ -18,7 +18,7 @@ def get_directoryData():
     label_path.pack(pady=50)
     f_chooseSavePath(filepath)
 
-button=Button(root,text='Choose Directory',command=get_directoryData,width=20,height=4,bg='gray',fg='white')
+button=Button(root,text='Choose Directory',command=get_directoryData,width=20,height=3,bg='gray',fg='white',font='30')
 button.pack()
 
 videoLinkPath=Text(root,width=40 ,height=5,bg='white',fg="black",font=('30'))
@@ -32,14 +32,13 @@ def downloadVideo():
     inputValue=videoLinkPath.get("1.0","end-1c") # Get TextBox Value
     try: # Try Validate the Entered from the User YouTube Link
         pytube.YouTube(inputValue)
-        messagebox.showinfo("Info","YouTube video started to download")
+        messagebox.showinfo("Info","YouTube video started to download") # Msg Box for Starting to Download
         f_DownloadContent(inputValue, content_type)
-        messagebox.showinfo("Successfully","YouTube video downloaded successfully")
+        messagebox.showinfo("Successfully","YouTube video downloaded successfully") # Msg Box for Successfully Completed Download
     except: # If NOT Valid
-        print("Error")
-        messagebox.showerror("Failed","YouTube video download failed")
+        messagebox.showerror("Failed","YouTube video download failed") # Error Msg Box
         # Error Msg
 
-button=Button(root,text='Download',command=downloadVideo,width=20,height=4,bg='green',fg='white')
+button=Button(root,text='Download',command=downloadVideo,width=20,height=3,bg='green',fg='white',font='30')
 button.pack()
 root.mainloop()
