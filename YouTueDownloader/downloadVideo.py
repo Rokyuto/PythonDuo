@@ -14,12 +14,13 @@ def f_chooseSavePath(path_to_save):
 # Function to Download the YouTue Content
 def f_DownloadContent(link,content_type):
     global video # Initialize YouTube Video Variable
+    print("Calling")
     try:
         video = pytube.YouTube(link) # Get the YouTube video from the YouTube URL
         # Check the Chosen video type - mp3 or mp4
         if content_type == "mp4": # If mp4
             video = video.streams.get_highest_resolution() # Get Highest Video Resolution
-            video.download() # Download the Video in mp4 format
+            video.download(output_path=save_path) # Download the Video in mp4 format
         elif content_type == "mp3": # If mp3
             audio=video.streams.filter(only_audio=True).first() # Extract the Audio from the Video
             audio_file = audio.download(output_path=save_path) # Download the Audio

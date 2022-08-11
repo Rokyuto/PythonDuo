@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
-from downloadVideo import f_chooseSavePath
+import pytube
+from downloadVideo import *
 
 # Window specification
 root= Tk()
@@ -20,15 +21,20 @@ button.pack()
 
 videoLinkPath=Text(root,width=20 ,height=5,bg='red',fg="white")
 videoLinkPath.pack(pady=2)
-inputValue=""
+content_type = "mp3"
+
 def downloadVideo():
     global label_path
     global videoLinkPath
-    global inputValue
-    inputValue=videoLinkPath.get("1.0","end-1c")
-    print(inputValue)
+    global content_type
+    inputValue=videoLinkPath.get("1.0","end-1c") # Get TextBox Value
+    try: # Try Validate the Entered from the User YouTube Link
+        pytube.YouTube(inputValue)
+        f_DownloadContent(inputValue, content_type)
+    except: # If NOT Valid
+        print("Error")
+        # Error Msg
 
 button=Button(root,text='getdata',command=downloadVideo,width=10,height=4,bg='red',fg='white')
 button.pack()
 root.mainloop()
-
