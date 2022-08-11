@@ -23,12 +23,28 @@ button.pack()
 
 videoLinkPath=Text(root,width=40 ,height=5,bg='white',fg="black",font=('30'))
 videoLinkPath.pack(pady=2)
-content_type = "mp3"
+content_type=""
 
+# Radio buttons
+r=StringVar()
+def radioCliecked():
+    global content_type
+    if(r.get()=="Mp3"):
+        content_type ="mp3"
+    elif(r.get()=="Mp4"):
+        content_type ="mp4"
+    return content_type        
+
+Radiobutton(root,text="Mp3",variable=r,value="Mp3",command=radioCliecked).pack()
+Radiobutton(root,text="Mp4",variable=r,value="Mp4",command=radioCliecked).pack()
+
+
+print(content_type)
 def downloadVideo():
     global label_path
     global videoLinkPath
     global content_type
+    global r
     inputValue=videoLinkPath.get("1.0","end-1c") # Get TextBox Value
     try: # Try Validate the Entered from the User YouTube Link
         pytube.YouTube(inputValue)
