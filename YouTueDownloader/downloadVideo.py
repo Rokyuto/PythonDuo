@@ -1,29 +1,37 @@
 import pytube
 import os
-from moviepy.editor import VideoFileClip
 
 save_path = ""
-content = ""
-#temp_link = "https://youtu.be/Qpf26PtBXgo"
-#temp_video_type = "mp4"
-#temp_content_name = "Forever 1"
+temp = "C:/Users/Viktor/Desktop/"
+video = ""
+temp_link = "https://youtu.be/Qpf26PtBXgo"
+temp_video_type = "mp3"
 
-# Function to Choose Save Location/Directory
+# Function to Choose Save Location/Directory for the YouTue Content
 def f_chooseSavePath(path_to_save):
     global save_path
     save_path = path_to_save
     return save_path
 
-
-def f_DownloadContent(link):
-    global content
+# Function to Download the YouTue Content
+def f_DownloadContent(link,content_type):
+    global video # Initialize YouTube Video Variable
     try:
-        content = pytube.YouTube(link)
-        content = content.streams.get_highest_resolution()
-        content.download()
+        video = pytube.YouTube(link) # Get the YouTube video from the YouTube URL
+        # Check the Chosen video type - mp3 or mp4
+        if content_type == "mp4": # If mp4
+            video = video.streams.get_highest_resolution() # Get Highest Video Resolution
+            video.download() # Download the Video in mp4 format
+        elif content_type == "mp3": # If mp3
+            audio=video.streams.filter(only_audio=True).first() # Extract the Audio from the Video
+            audio_file = audio.download(output_path=save_path) # Download the Audio
+            #save the file
+            base,extros = os.path.splitext(audio_file) # Split the audio file name to Title and Format
+            new_file_name = base+'.mp3' # Change the audio file format to .mp3
+            os.rename(audio_file,new_file_name) # Rename the audio file with the new name (new_file_name)
     except:
         print("Error with Connection to YouTube")
       
-  
-#f_chooseSavePath()
-#f_DownloadContent()
+# Test Functions  
+# f_chooseSavePath(temp)
+# f_DownloadContent(temp_link,temp_video_type)
