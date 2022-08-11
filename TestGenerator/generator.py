@@ -24,6 +24,5 @@ def f_PrintQuestions():
     with open('TestGenerator/TestQuestions.txt', 'w') as file: # Open TestQuestions.txt in write mode
         for question in TestList: # Iterate the TestList, who contains the Random Generated Questions
             file.write("%s \n" % question) # Frite the Current Question to the txt file
-            
-        
+              
 f_GenerateRandomQuestions() # After the f_GetDatabaseQuestions function Ends, this function is called
