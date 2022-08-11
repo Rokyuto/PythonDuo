@@ -2,10 +2,7 @@ import pytube
 import os
 
 save_path = ""
-temp = "C:/Users/Viktor/Desktop/"
 video = ""
-temp_link = "https://youtu.be/Qpf26PtBXgo"
-temp_video_type = "mp3"
 
 # Function to Choose Save Location/Directory for the YouTue Content
 def f_chooseSavePath(path_to_save):
