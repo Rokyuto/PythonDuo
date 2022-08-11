@@ -5,6 +5,7 @@ from downloadVideo import *
 
 # Window specification
 root= Tk()
+root.title("YouTue Video Downloader")
 label_path=""
 root.geometry('500x500')
 select_dir=Label(root,text='Select Directory',font=('italic 15'))
@@ -19,7 +20,7 @@ def get_directoryData():
 button=Button(root,text='Choose Directory',command=get_directoryData,width=20,height=4,bg='gray',fg='white')
 button.pack()
 
-videoLinkPath=Text(root,width=40 ,height=5,bg='white',fg="black")
+videoLinkPath=Text(root,width=40 ,height=5,bg='white',fg="black",font=('30'))
 videoLinkPath.pack(pady=2)
 content_type = "mp3"
 
