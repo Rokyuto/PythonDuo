@@ -15,15 +15,20 @@ def get_directoryData():
     label_path.pack(pady=50)
     f_chooseSavePath(filepath)
 
-button=Button(root,text='getDir white',command=get_directoryData,width=10,height=4,bg='red',fg='white')
+button=Button(root,text='getDir',command=get_directoryData,width=10,height=4,bg='red',fg='white')
 button.pack()
 
 videoLinkPath=Text(root,width=20 ,height=5,bg='red',fg="white")
 videoLinkPath.pack(pady=2)
-
+inputValue=""
 def downloadVideo():
     global label_path
     global videoLinkPath
+    global inputValue
+    inputValue=videoLinkPath.get("1.0","end-1c")
+    print(inputValue)
 
+button=Button(root,text='getdata',command=downloadVideo,width=10,height=4,bg='red',fg='white')
+button.pack()
 root.mainloop()
 
